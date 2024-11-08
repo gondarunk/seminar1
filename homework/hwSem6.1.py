@@ -5,6 +5,14 @@ class Vector():
       self.x=x
       self.y = y
       self.z = z
+  '''
+  def __init__(self,s):
+      s = list(map(int,input().split()))
+      self.x = s[0]
+      self.y = s[1]
+      self.z = s[2]
+      #Vector('2 3 4')
+  '''
   def __add__(self, other):
       if isinstance(other, Vector):
           return Vector(self.x + other.x, self.y + other.y, self.z + other.z)
@@ -24,11 +32,12 @@ class Vector():
       if isinstance(other, Vector):
           return self.x * other.x + self.y * other.y + self.z * other.z
       elif isinstance(other, (int, float)):
-          return Vector(f"({self.x * other}, {self.y * other}, {self.z * other})")
+          return Vector(self.x * other, self.y * other, self.z * other)
 
       else:
           raise TypeError("Неверный тип данных")
-
+  def __repr__(self):
+      return f"{self.x} {self.y} {self.z}"
 
 v1=Vector(1.0,1.0,1.0)
 v2=Vector(2.0,2.0,2.0)
